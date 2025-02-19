@@ -57,7 +57,7 @@ const drawerOpen = ref(false)
 const navLinks = [
   { name: 'Home', label: '首頁', path: '/' },
   { name: 'SceneEdit', label: '場景編輯', path: '/scene-edit' },
-  { name: 'Upload', label: '上傳模型', path: '/upload' },
+  // { name: 'Upload', label: '上傳模型', path: '/upload' },
   { name: 'UploadedModels', label: '查看模型', path: '/uploaded-models' },
 ]
 </script>

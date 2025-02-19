@@ -127,36 +127,34 @@ async function uploadFileThroughSignedURL(localFilePath, bucketKey, objectKey, r
 
 /**
  * 7. 啟動 Model Derivative 轉換
- *    轉換要求同時產生供 Forge Viewer 使用的 SVF（2D、3D）與 OBJ 衍生檔（若支援）
+ *    僅要求產生供 Forge Viewer 使用的 SVF（或 SVF2）輸出（2D、3D）
  */
 async function translateObject(objectIdBase64) {
-  const token = await getToken()
-  const url = 'https://developer.api.autodesk.com/modelderivative/v2/designdata/job'
+  const token = await getToken();
+  const url = 'https://developer.api.autodesk.com/modelderivative/v2/designdata/job';
   const payload = {
     input: {
       urn: objectIdBase64
     },
     output: {
-      // 同時要求產生 SVF 與 OBJ 輸出
+      // 僅要求產生 SVF 或 SVF2 衍生檔，2D 與 3D 皆支援
       formats: [
         {
-          type: 'svf',
+          type: 'svf', // 如果需要 SVF2，可改為 'svf2'
           views: ['2d', '3d']
-        },
-        {
-          type: 'obj'
         }
       ]
     }
-  }
+  };
   const resp = await axios.post(url, payload, {
     headers: {
       Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json'
     }
-  })
-  return resp.data
+  });
+  return resp.data;
 }
+
 
 /**
  * 8. 從 manifest 中查詢 OBJ 衍生檔的 derivativeUrn
