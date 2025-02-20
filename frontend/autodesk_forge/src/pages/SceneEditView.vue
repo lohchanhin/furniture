@@ -54,7 +54,7 @@ const selectedCategory = ref(null)
 const selectedItem = ref(null)
 
 // 主要環境模型 URN，初始值可為空或預設值
-const documentId = ref('urn:預設環境模型URN')
+const documentId = ref('urn:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6d2lubmllL2…yMzhjLWQwODItNGJiYy1hNjM2LTgyZWVhMzNhZjEwZC5vYmo=')
 
 // 控制左側與中側展開狀態
 const leftExpanded = ref(false)
